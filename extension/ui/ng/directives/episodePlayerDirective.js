@@ -20,7 +20,7 @@ function episodePlayerDirective($document, $window, podcastManagerService, episo
 		var controller = this;
 
 		var durationInSeconds;
-		
+
 		/**
 		 * @type {EpisodeId}
 		 */
@@ -82,11 +82,11 @@ function episodePlayerDirective($document, $window, podcastManagerService, episo
 				const mainPlayerBottom = $document[0].getElementById('audioPlayer').getBoundingClientRect().bottom;
 				controller.miniPlayerVisible = mainPlayerBottom < 0;
 
-				if((!(typeof controller.previousMiniPlayerVisible === 'undefined')) && 
+				if((!(typeof controller.previousMiniPlayerVisible === 'undefined')) &&
 				   controller.miniPlayerVisible !== controller.previousMiniPlayerVisible) {
 					$scope.$apply(function() {});
 				}
-				
+
 				controller.previousMiniPlayerVisible = controller.miniPlayerVisible;
 			});
 		}
@@ -116,9 +116,9 @@ function episodePlayerDirective($document, $window, podcastManagerService, episo
 			controller.volume.value = 100;
 
 			controller.showOptions = false;
-			
+
 			// The data binding will not work properly if the components
-			// are direclty placed in controller	
+			// are direclty placed in controller
 			controller.options = {
 				order: 'from_podcast',
 				continuous: false,
@@ -219,7 +219,7 @@ function episodePlayerDirective($document, $window, podcastManagerService, episo
 		function progressMouseOver(event) {
 			controller.timeMouseOver = formatSeconds(event.offsetX / event.currentTarget.clientWidth * durationInSeconds);
 		}
-		
+
 		function progressMouseLeave() {
 			controller.timeMouseOver = '';
 		}
@@ -265,7 +265,7 @@ function episodePlayerDirective($document, $window, podcastManagerService, episo
 		}
 
 		function getAudioInfoCallback(audioInfo) {
-			if(!audioInfo.episodeId)
+			if(!audioInfo || !audioInfo.episodeId)
 				return;
 
 			episodeId = audioInfo.episodeId;
