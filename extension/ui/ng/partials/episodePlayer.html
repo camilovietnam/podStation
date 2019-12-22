@@ -132,17 +132,29 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 			<tbody>
 				<tr>
 					<td>
-						<i class="fa fa-refresh fa-spin" ng-if="episodePlayer.loading" title="Loading"></i>
-						<a href="" ng-click="episodePlayer.play()" ng-if="!episodePlayer.playing && !episodePlayer.loading"><i class="fa fa-play" title="{{'play' | chrome_i18n }}"></i></a>
-						<a href="" ng-click="episodePlayer.pause()" ng-if="episodePlayer.playing && !episodePlayer.loading"><i class="fa fa-pause" title="{{'pause' | chrome_i18n }}"></i></a>
-						<a href="" ng-click="episodePlayer.stop()"><i class="fa fa-stop" title="{{'stop' | chrome_i18n }}"></i></a>
-						<a href="" ng-click="episodePlayer.backward()" ng-class="{playerButtonDisabled: episodePlayer.loading}" title="{{'backward' | chrome_i18n }}"><i class="fa fa-backward"></i></a>
-						<a href="" ng-click="episodePlayer.forward()" ng-class="{playerButtonDisabled: episodePlayer.loading}" title="{{'forward' | chrome_i18n }}"><i class="fa fa-forward"></i></a>
+						<div class="text-center">
+							<a href="" ng-click="episodePlayer.play()" ng-if="!episodePlayer.playing && !episodePlayer.loading">
+								<i class="fa fa-play fa-2x" title="{{'play' | chrome_i18n }}"></i>&nbsp;
+							</a>
+							<a href="" ng-click="episodePlayer.pause()" ng-if="episodePlayer.playing && !episodePlayer.loading">
+								<i class="fa fa-pause fa-2x" title="{{'pause' | chrome_i18n }}"></i>&nbsp;
+							</a>
+							<a href="" ng-click="episodePlayer.stop()">
+								<i class="fa fa-stop fa-2x" title="{{'stop' | chrome_i18n }}"></i>&nbsp;
+							</a>
+							<a href="" ng-click="episodePlayer.backward()" ng-class="{playerButtonDisabled: episodePlayer.loading}" title="{{'backward' | chrome_i18n }}">
+								<i class="fa fa-backward fa-2x"></i>&nbsp;
+							</a>
+							<a href="" ng-click="episodePlayer.forward()" ng-class="{playerButtonDisabled: episodePlayer.loading}" title="{{'forward' | chrome_i18n }}">
+								<i class="fa fa-forward fa-2x"></i>&nbsp;
+							</a>
+							<i class="fa fa-refresh fa-spin fa-2x" ng-if="episodePlayer.loading" title="Loading"></i>&nbsp;
+						</div>
+						<br>
 						<a href="" ng-click="episodePlayer.previousEpisode()" ng-if="true"><i class="fa fa-step-backward" title="{{'previous_episode' | chrome_i18n }}"></i></a>
 						<a href="" ng-click="episodePlayer.nextEpisode()" ng-if="true"><i class="fa fa-step-forward" title="{{'next_episode' | chrome_i18n }}"></i></a>
-						<a href="" ng-click="episodePlayer.tooglePlaylistVisibility()"><i class="fa fa-list" title="{{'toggle_playlist' | chrome_i18n }}"></i></a>
 						<a href="" ng-click="episodePlayer.refresh()" ng-if="!episodePlayer.loading"><i class="fa fa-refresh" title="{{'refresh_player' | chrome_i18n }}"></i></a>
-						
+
 						<span>
 							<span ng-if="episodePlayer.timeMouseOver"><i>{{episodePlayer.timeMouseOver}}</i></span>
 							<span ng-if="!episodePlayer.timeMouseOver">{{episodePlayer.time}}</span>
@@ -169,7 +181,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 							<a ng-if="episodePlayer.mediaLink" ng-href="{{episodePlayer.mediaLink}}" target="_blank">{{episodePlayer.mediaTitle}}</a>
 							<span ng-if="!episodePlayer.mediaLink">{{episodePlayer.mediaTitle}}</span>
 						</div>
-						<div id="progressOut" ng-click="episodePlayer.seek($event)" ng-mousemove="episodePlayer.progressMouseOver($event)" 
+						<div id="progressOut" ng-click="episodePlayer.seek($event)" ng-mousemove="episodePlayer.progressMouseOver($event)"
 						ng-mouseleave="episodePlayer.progressMouseLeave()" title="{{episodePlayer.timeMouseOver}}">
 							<div id="progressIn" style="width: {{episodePlayer.timePercent}}%"></div>
 						</div>
@@ -203,7 +215,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 								<span> {{'pause_when_locked' | chrome_i18n}}</span>
 							</div>
 						</div>
-						<div ng-show="error" id="playerErrorInfo"> 
+						<div ng-show="error" id="playerErrorInfo">
 							<i class="fa fa-exclamation"></i> {{'player_error' | chrome_i18n}}
 						</div>
 					</td>

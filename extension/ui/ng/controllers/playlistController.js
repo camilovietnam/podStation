@@ -9,7 +9,7 @@
 		playlist.dragEnded = dragEnded;
 
 		playlist.isVisible = isVisible;
-		
+
 		initialize();
 
 		updateList();
@@ -18,8 +18,8 @@
 			updateList();
 		});
 
-		// I'm not using episodePlayer.changed at the moment because it 
-		// has a single listener, if I do there will be a conflict with 
+		// I'm not using episodePlayer.changed at the moment because it
+		// has a single listener, if I do there will be a conflict with
 		// the existing listener.
 		messageService.for('audioPlayer').onMessage('changed', function() {
 			updateList();
@@ -46,12 +46,12 @@
 							title: episodeContainer.episode.title,
 							image: episodeContainer.podcast.image,
 							episodeId: podcastDataService.episodeId(episodeContainer.episode, episodeContainer.podcast)
-						}; 
+						};
 					});
 
 					$scope.$apply(function() {
 						playlist.visible = response.visible;
-					
+
 						// sort entries according to playlistEntries
 						playlist.entries = [];
 
@@ -68,7 +68,7 @@
 					});
 
 					episodePlayer.getAudioInfo(function(audioInfo) {
-						if(audioInfo.episodeId) {
+						if(audioInfo && audioInfo.episodeId) {
 							$scope.$apply(function() {
 								playlist.entries.forEach(function(entry) {
 									entry.isPlaying = podcastDataService.episodeIdEqualsId(entry.episodeId, audioInfo.episodeId);
@@ -90,7 +90,7 @@
 
 		function dragEnded() {
 			// playlist.entries should sufice for the moment
-			messageService.for('playlist').sendMessage('set', { 
+			messageService.for('playlist').sendMessage('set', {
 				entries: playlist.entries.map(function(entry) {
 					return entry.episodeId;
 				})

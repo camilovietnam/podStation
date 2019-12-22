@@ -1,10 +1,9 @@
-# podStation Chrome Extension
+# podStation fork
 
-[![Build Status](https://travis-ci.org/podStation/podStation.svg?branch=master)](https://travis-ci.org/podStation/podStation)
+This is a fork of the podcast aggregator for google Chrome, centered around changes on the user interface for personal use.
 
-This is a podcast aggregator for chrome.
-
-You can install the extension at the [chrome web store](https://chrome.google.com/webstore/detail/podstation/bpcagekijmfcocgjlnnhpdogbplajjfn).
+You can find the original extension at the [chrome web store](https://chrome.google.com/webstore/detail/podstation/bpcagekijmfcocgjlnnhpdogbplajjfn).
+The official repository for the original extension is [available on Github](https://github.com/podStation/podStation)
 
 ## Installing the dependencies
 
@@ -23,15 +22,15 @@ After that, install the dependencies in the following order:
 4. Click the button _Load unpacked extension_.
 5. Choose the `extension` folder
 
-Voilà!  
-You should see podStation's icon on chrome's toolbar.  
+Voilà!
+You should see podStation's icon on chrome's toolbar.
 You are now running a local copy of podStation, have fun!
 
 ## Automated tests
 
 We use Karma for automated tests.
 
-You can run the tests with the command line `npm test`. 
+You can run the tests with the command line `npm test`.
 If you want to debug the tests run `npm run test_chrome` if you just want to run them.
 
 ## Documentation

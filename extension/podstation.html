@@ -9,9 +9,9 @@
 		<script type="text/javascript" src="lib/angular-drag-and-drop-lists.min.js"></script>
 		<script type='text/javascript' src='lib/ng-infinite-scroll.min.js'></script>
 		<script type='text/javascript' src='lib/podStationNGReuse.min.js'></script>
-		
+
 		<script type="text/javascript" src="reuse/messageServiceDefinition.js"></script>
-		
+
 		<script type="text/javascript" src="ui/common.js"></script>
 		<script type="text/javascript" src="ui/ng/podstationApp.js"></script>
 		<script type="text/javascript" src="reuse/event.js"></script>
@@ -37,30 +37,42 @@
 		<script type="text/javascript" src="ui/ng/controllers/notificationController.js"></script>
 		<script type="text/javascript" src="ui/ng/controllers/optionsController.js"></script>
 		<script type="text/javascript" src="ui/ng/controllers/aboutController.js"></script>
-		
+
 		<script type="text/javascript" src="podstation.js"></script>
-		
+
 		<link rel="stylesheet" type="text/css" href="podstation.css">
 		<link rel="stylesheet" href="lib/font-awesome.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
 	</head>
 	<body>
-		<div id="header" ng-controller="headerController">
-			<div id="headerRight">
-				<input type="text" id="entryBox" placeholder="{{'search_placeholder' | chrome_i18n }}" ng-model="entry" ng-keypress="editBoxKeyPress($event)"/>
-				<input type="button" ng-click="searchPodcast()" value="{{'search_button' | chrome_i18n }}"/>
-				<input type="button" id="addRSS" ng-click="addPodcast()" value="{{'add_feed' | chrome_i18n }}"/>
+	<div id="header" ng-controller="headerController">
+		<div id="headerRight">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-6" style="vertical-align: middle">
+						<span class="fa fa-search fa-2x" style="color:white"></span>
+						<input style="width: 80%!important; display: inline-block!important" class="form-control" type="text" id="entryBox" placeholder="{{'search_placeholder' | chrome_i18n }}" ng-model="entry" ng-keypress="editBoxKeyPress($event)"/>
+					</div>
+					<div class="col-6">
+						<input class="btn btn-dark" type="button" ng-click="searchPodcast()" value="{{'search_button' | chrome_i18n }}"/>
+						<input class="btn btn-dark" type="button" id="addRSS" ng-click="addPodcast()" value="{{'add_feed' | chrome_i18n }}"/>
+					</div>
+				</div>
 			</div>
-			<h1 id="mainTitle"><img src="images/rss-alt-2x.png"></img> podStation</h1>
 		</div>
+	</div>
+	<div id="wrapper">
 		<div ng-include="'ui/ng/partials/notifications.html'"></div>
 		<ps-episode-player id="audioPlayer"></ps-episode-player>
 		<ps-episode-player mini-player="true"></ps-episode-player>
 		<div ng-include="'ui/ng/partials/playlist.html'"></div>
 		<div id="contentBoxOut">
 			<div id="contentBoxMenu" ng-controller="menuController">
-				<a href="#/Podcasts">Podcasts</a> |
-				<a href="#/LastEpisodes">{{'last_episodes' | chrome_i18n }}</a> |
-				<a href="#/Options">{{'options' | chrome_i18n }}</a> |
+				<a class="btn btn-dark text-white" href="#/Podcasts">Podcasts</a>
+				<a class="btn btn-dark text-white" href="#/LastEpisodes">{{'last_episodes' | chrome_i18n }}</a>
+				<a class="btn btn-dark text-white" href="#/Options">{{'options' | chrome_i18n }}</a>
+				<br>
 				<a class="icon" href="#" id="updateAll" title="{{'update_all' | chrome_i18n }}">
 					<i class="fa fa-refresh"></i>
 				</a> |
@@ -79,15 +91,6 @@
 				<a class="icon icon_red" href="https://chrome.google.com/webstore/detail/podstation-podcast-player/bpcagekijmfcocgjlnnhpdogbplajjfn/reviews" target="_blank" title="{{'review' | chrome_i18n }}">
 					<i class="fa fa-heart"></i>
 				</a> |
-				<a class="icon icon_facebook" href="https://www.facebook.com/podStation/" target="_blank" title="Facebook">
-					<i class="fa fa-facebook-official"></i>
-				</a> |
-				<a class="icon icon_twitter" href="https://www.twitter.com/podStation_app/" target="_blank" title="Follow us on Twitter">
-					<i class="fa fa-twitter"></i>
-				</a> |
-				<a class="icon icon_github" href="https://github.com/podStation/podStation" target="_blank" title="Fork it!">
-					<i class="fa fa-github-square"></i>
-				</a> |
 				<a class="icon" href="https://bitbucket.org/dellagustin/podstation_chrome_ext/issues/new" target="_blank" title="{{'report_bug' | chrome_i18n }}">
 					<i class="fa fa-bug"></i>
 				</a> |
@@ -100,5 +103,6 @@
 			<div id="contentBoxIn" ng-view>
 			<div>
 		<div>
+	</div>
 	</body>
 </html>

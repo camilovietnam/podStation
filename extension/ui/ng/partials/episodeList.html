@@ -2,7 +2,7 @@
 	<table>
 		<tr>
 			<td ng-if="episode.image">
-				<img ng-src="{{episode.image}}" class="podcastImage" width="100"></img>
+				<img ng-src="{{episode.image}}" class="podcastImage border border-dark rounded-circle" width="100"></img>
 			</td>
 			<td>
 				<div class="itemMenu">
@@ -23,28 +23,19 @@
 				<div class="textView">
 					<div class="itemHeader">
 						<a href="" ng-click="episodeList.play(episode)" title="{{'play_episode' | chrome_i18n}}" class="itemTitle episodeTitle">{{episode.title}}</a>
-						<br>
-						<span ng-if="episode.link">
-							<a ng-href="{{episode.link}}" target="_blank">{{'open_episode_website' | chrome_i18n}}</a> -
+
+						<span ng-if="episode.pubDate">
+							<br>{{'publication_date' | chrome_i18n }}: {{episode.pubDate}}
 						</span>
-						<span class="psBtn icon_twitter" title="{{'tweet_this_episode' | chrome_i18n}}" ng-click="episodeList.tweet(episode)">
-							<i class="fa fa-twitter"></i> {{'tweet' | chrome_i18n}}
-						</span>
-						<!--<span> | </span>
-						<span class="psBtn icon_facebook" title="{{'facebook_share_this_episode' | chrome_i18n}}" ng-click="episodeList.shareWithFacebook(episode)">
-							<i class="fa fa-facebook"></i> {{'facebook_share' | chrome_i18n}}
-						</span>-->
 						<span ng-if="episode.podcastIndex !== undefined">
-							<br>
-							<a ng-href="#/Episodes/{{episode.podcastIndex}}">
+							- <a ng-href="#/Episodes/{{episode.podcastIndex}}">
 								<span ng-bind-html="{ message: 'all_eps_from', arguments: [episode.podcastTitle]} | chrome_i18n"></span>
 							</a>
 						</span>
 						<span ng-if="episode.lastTimePlayedFormatted"><br>{{'last_time_played' | chrome_i18n }}: {{ episode.lastTimePlayedFormatted }}</span>
 						<span ng-if="episode.pausedAt"><br>{{'paused_at' | chrome_i18n }}: {{episode.pausedAt}}</span>
-						<span ng-if="episode.pubDate"><br>{{'publication_date' | chrome_i18n }}: {{episode.pubDate}}</span>
 					</div>
-					<div class="itemDescription" ng-bind-html="episode.description">
+					<div style="font-size: 0.7em" class="itemDescription" ng-bind-html="episode.description">
 					</div>
 					<ps-participant-list participants="episode.participants"></ps-participant-list>
 				</div>
