@@ -150,11 +150,11 @@ function episodePlayerDirective($document, $window, podcastManagerService, episo
 		}
 
 		function playbackRateStepUp() {
-			return controller.playbackRate >= 1.0 ? 0.25 : 0.05;
+			return controller.playbackRate >= 1.0 ? 0.2 : 0.05;
 		}
 
 		function playbackRateStepDown() {
-			return -(controller.playbackRate > 1.0 ? 0.25 : 0.05);
+			return -(controller.playbackRate > 1.0 ? 0.2 : 0.05);
 		}
 
 		function formatPlaybackRate (playbackRate) {
