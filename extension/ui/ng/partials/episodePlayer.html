@@ -176,6 +176,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 						<img ng-src="{{episodePlayer.imageUrl}}" id="playerImage"></img>
 					</td>
 					<td>
+
 						<div id="playingTitle">
 							<span><b>{{'playing' | chrome_i18n }}:</b> </span>
 							<a ng-if="episodePlayer.mediaLink" ng-href="{{episodePlayer.mediaLink}}" target="_blank">{{episodePlayer.mediaTitle}}</a>
@@ -185,6 +186,14 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 						ng-mouseleave="episodePlayer.progressMouseLeave()" title="{{episodePlayer.timeMouseOver}}">
 							<div id="progressIn" style="width: {{episodePlayer.timePercent}}%"></div>
 						</div>
+
+						<div id="speedControl" ng-if="episodePlayer.miniPlayer" style="padding-top: 10px">
+							<span>{{'speed' | chrome_i18n}}</span>
+							<button class="psTransparent" ng-click="episodePlayer.speedUp()" title="{{'speed_up' | chrome_i18n }}: {{episodePlayer.nextPlaybackRateUp()}}x"><i class="fa fa-chevron-up"></i></button>
+							<button class="psTransparent" ng-click="episodePlayer.speedDown()" title="{{'speed_down' | chrome_i18n }}: {{episodePlayer.nextPlaybackRateDown()}}x"><i class="fa fa-chevron-down"></i></button>
+							<span>{{episodePlayer.currentPlaybackRate()}}x</span>
+						</div>
+
 						<div style="padding-bottom: 4px;" ng-if="!episodePlayer.miniPlayer">
 							<span class="psPlayerBtnSecondary psPlayerBtnSecondaryTwitter" title="{{'tweet_this_episode' | chrome_i18n}}" ng-click="episodePlayer.tweet()"><i class="fa fa-twitter"></i> {{'tweet' | chrome_i18n}}</span>
 							<!--<span style="color: gray;"> | </span>
